@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>flower website</title>
+<link rel="stylesheet" href="flowerdesign.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<nav class="nav-bar">
+<div class="logo">BloomNest</div>
+
+<ul class="menu">
+<li><a href="Index1.html">Home</a></li>
+<li><a href="product.html">Product</a></li>
+<li><a href="w-contactus.html">🛒 Cart</a></li>
+</ul>
+
+</nav>
+
+
+<section class="brand-title">
+<h1>Our Products</h1>
+<p>Choose your favorite flowers</p>
+</section>
+<section class="product-section">
+
+<!-- Product 1 -->
+<div class="product-box">
+<img src="sympathy.avif">
+<h3>For Sympathy</h3>
+<p>Elegant lily collection</p>
+<p> price:500</p>
+<form onsubmit="addToCart(event)">
+<input type="hidden" name="flower" value="Sympathy Lily">
+<input type="hidden" name="price" value="500">
+<label>Quantity</label>
+<input type="number" name="quantity" value="1" min="1">
+<button type="submit" class="cart-btn">Add to Cart</button>
+</form>
+</div>
+
+
+
+<!-- Product 2 -->
+<div class="product-box">
+<img src="thanku.avif">
+<h3>Send Thank You</h3>
+<p>Fresh Flowers</p>
+<p> price:400</p>
+
+<form onsubmit="addToCart(event)">
+<input type="hidden" name="flower" value="Thank You Flowers">
+<input type="hidden" name="price" value="400">
+<label>Quantity</label>
+<input type="number" name="quantity" value="1" min="1">
+<button type="submit" class="cart-btn">Add to Cart</button>
+</form>
+</div>
+<!-- Product 3 -->
+<div class="product-box">
+<img src="getwellsoon.avif">
+<h3>Get Well Soon</h3>
+<p>Colorful seasonal flowers</p>
+<p> price:450</p>
+
+<form onsubmit="addToCart(event)">
+<input type="hidden" name="flower" value="Get Well Soon Flowers">
+<input type="hidden" name="price" value="450">
+<label>Quantity</label>
+<input type="number" name="quantity" value="1" min="1">
+<button type="submit" class="cart-btn">Add to Cart</button>
+</form>
+</div>
+</section>
+<script>
+function addToCart(event){
+event.preventDefault();
+let form = event.target;
+let flower = form.querySelector('input[name="flower"]').value;
+let quantity = parseInt(form.querySelector('input[name="quantity"]').value);
+let price = parseInt(form.querySelector('input[name="price"]').value);
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+cart.push({
+flower: flower,
+quantity: quantity,
+price: price
+});
+localStorage.setItem("cart", JSON.stringify(cart));
+alert("Added to cart");
+}
+</script>
+
+
+</body>
+</html>
